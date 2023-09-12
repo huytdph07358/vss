@@ -1,0 +1,10 @@
+{
+  "xuLyThanhCong": "Xử lý thành công",
+  "xuLyThatBai": "Xử lý thất bại",
+  "thongBao": "Thông báo",
+  "phienLamViecDaHetHieuLucVuiLongDangNhapLaiPhanMem": "Phiên làm việc bị hết hiệu lực, có thể do bạn đã ngừng sử dụng phần mềm trong một khoảng thời gian dài hoặc kết nối đến hệ thống máy chủ bị gián đoạn tạm thời. Phần mềm sẽ tự động đăng xuất. Vui lòng đăng nhập lại để tiếp tục sử dụng..",
+  "PhanMemKhongKetNoiDuocToiMayChuHeThong": "Thông báo",
+  "HeThongTBXuatHienExceptionChuaKiemDuocSoat": "Thông báo",
+  "HeThongTBNguoiDungDaHetPhienLamViecVuiLongDangNhapLai": "Thông báo",
+  "zzz": ""
+}

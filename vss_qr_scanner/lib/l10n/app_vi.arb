@@ -1,0 +1,12 @@
+{
+  "quetMaQr": "Quét mã QR",
+  "copiedToClipboard": "Copied to clipboard",
+  "datQrcoeNamVuaKhungHinh_DuSangVaRoNet": "Đặt qrcode nằm vừa khung hình, đủ sáng và rõ nét",
+  "banCanCapQuyenTruyCapCameraMayChoUngDung": "Bạn cần cấp quyền truy cập camera của máy cho ứng dụng",
+  "khongTruyCapDuocCameraMay": "Không truy cập camera của máy",
+  "choPhepUngDungTruyCapMayAnhCuaBan": "Cho phép ứng dụng truy cập máy ảnh của bạn?",
+  "banCanChoPhepCapquyenTruyCapMayAnhCuaBanDeSuDungTrongUngDung": "Bạn cần cho phép cấp quyền truy cập máy ảnh của bạn để sử dụng trong ứng dụng. Vào mục Thông tin ứng dụng -> Quyền ứng dụng -> Quyền máy ảnh -> cho phép",
+  "dongY":"Đồng ý",
+  "tuChoi":"Từ chối",
+  "zzz": ""
+}

@@ -1,0 +1,22 @@
+{
+  "docThe": "Card reader",
+  "tapThe": "Tap card",
+  "quetQrcode": "Scan qrocde",
+  "boQua": "Cancel",
+  "dongY": "Agree",
+  "dangXuLy" : "Processing...",
+  "duLieuBatBuoc": "Require data",
+  "tiepTuc": "Next",
+  "xuLyThanhCong": "Process success",
+  "xuLyThatBai": "Process fail",
+  "vuiLongDienDayDuThongTinDeTiepTuc": "Please enter all information to continue",
+  "khongDocDuocKeyHeThong": "Can't read system key",
+  "khongDocDuocDuLieuTrenThe": "Can't read data on card",
+  "thietLapNfcChuaBat": "nfc setup is not enabled",
+  "copiedToClipboard": "Copied to clipboard",
+  "kiemTraLienTuc": "Continuity check",
+  "iosAlertMessage": "Hold your iPhone near the card",
+  "iosMultipleTagMessage": "More than one tags are detected, please leave only one tag and try again.",
+
+  "zzz": ""
+}

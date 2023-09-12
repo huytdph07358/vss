@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vss_mobile_util/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_mobile_util/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_mobile_util/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_vplus_api/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_vplus_api/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_vplus_api/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_environment/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_environment/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_environment/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_card_util/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_card_util/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_card_util/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_date_time_util/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_date_time_util/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_date_time_util/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_regular_expression/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_regular_expression/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_regular_expression/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_qr_scanner/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_qr_scanner/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_qr_scanner/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_log/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_log/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_log/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_locale/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_locale/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_locale/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_navigator/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_navigator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_navigator/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_message_util/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_message_util/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_message_util/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_global_constant/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_global_constant/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_global_constant/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_address/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_address/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_address/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_name_util/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_name_util/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_name_util/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_ivt_api/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_ivt_api/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_ivt_api/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_cache_network_image/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_cache_network_image/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_cache_network_image/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_card_reader/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_card_reader/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_card_reader/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_theme/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_theme/build" />
+      <excludeFolder url="file://$MODULE_DIR$/vss_theme/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

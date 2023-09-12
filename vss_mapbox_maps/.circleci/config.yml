@@ -1,0 +1,203 @@
+version: 2.1
+
+orbs: 
+  flutter: circleci/flutter@1.1.0
+  android: circleci/android@2.1.2
+  macos: circleci/macos@2.3.3
+
+commands:
+
+  inject-netrc-credentials:
+    steps:
+      - run:
+          name: Configure .netrc
+          command: |
+            echo "machine api.mapbox.com login mapbox password ${SDK_REGISTRY_TOKEN}" >> ~/.netrc
+            chmod 0600 ~/.netrc
+  
+  install-gcloud:
+    # Link for gcloud versions: https://cloud.google.com/sdk/docs/downloads-versioned-archives#installation_instructions
+    parameters:
+      version:
+        type: string
+        default: "google-cloud-cli-405.0.0-darwin-x86_64.tar.gz"
+      checksum:
+        type: string
+        default: "504852f8ab0c7df62f80d9d687d74c80da68f1e17ad53055fbdb37cf9bbeebc7"
+    description: "Install gcloud"
+    steps:
+      - run:
+          name: Install gcloud
+          command: |
+            mkdir /tmp/gcloud && cd /tmp/gcloud
+
+            curl -OL https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/<< parameters.version >>
+            echo '<< parameters.checksum >> *<< parameters.version >>' >> checksumfile
+            shasum -a 256 -c checksumfile
+
+            tar zxvf << parameters.version >>
+            ./google-cloud-sdk/install.sh -q --install-python false
+
+            echo "source /tmp/gcloud/google-cloud-sdk/path.bash.inc" >> $BASH_ENV
+            echo "source /tmp/gcloud/google-cloud-sdk/completion.bash.inc" >> $BASH_ENV
+
+  login-gcloud:
+    steps:
+      - run:
+          name: Log in to Google Cloud Platform
+          command: |
+            if [[ -n "${GCLOUD_SERVICE_ACCOUNT_JSON}" ]]; then
+              echo "${GCLOUD_SERVICE_ACCOUNT_JSON}" > secret.json
+              gcloud auth activate-service-account --key-file secret.json --project mapbox-maps-flutter
+              rm secret.json
+            fi
+
+  add-mapbox-submodules-key:
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "9d:db:07:0b:62:81:11:c3:46:21:8e:fa:51:99:80:2d"
+
+jobs:
+
+  build-android:
+    parameters:
+      workspace-path:
+        type: string
+        default: example/build/app/outputs/apk
+    docker:
+      - image: cimg/android:2022.09
+    resource_class: xlarge
+    steps:
+      - checkout
+      - flutter/install_sdk_and_pub:
+          flutter_version: 3.3.2
+          app-dir: example
+      - run:
+          name: ktlint
+          working_directory: example/android
+          command: ./gradlew ktlint
+      - run:
+          name: unit test
+          command: flutter test test
+      - run:
+          name: "Build Android integration tests"
+          working_directory: example/android
+          command: |
+            flutter build apk
+            ./gradlew app:assembleAndroidTest
+            ./gradlew app:assembleDebug -Ptarget=integration_test/all_test.dart -Pdart-defines="$(echo -n "ACCESS_TOKEN=$MAPBOX_ACCESS_TOKEN" | base64 -w 0)"
+      - persist_to_workspace:
+          root: << parameters.workspace-path >>
+          paths:
+            - debug/app-debug.apk
+            - androidTest/debug/app-debug-androidTest.apk
+
+  run-android-tests-firebase:
+    parameters:
+      workspace-path:
+        type: string
+        default: example/build/app/outputs/apk
+    docker:
+      - image: cimg/android:2022.09
+    resource_class: large
+    steps:
+      - attach_workspace:
+          at: << parameters.workspace-path >>
+      - install-gcloud
+      - login-gcloud
+      - run:
+          name: "Run Android integration tests on Firebase"
+          no_output_timeout: 20m
+          command: |
+            gcloud firebase test android run --type instrumentation \
+              --app << parameters.workspace-path >>/debug/app-debug.apk \
+              --test << parameters.workspace-path >>/androidTest/debug/app-debug-androidTest.apk \
+              --timeout 5m \
+              --device model=oriole,version=33,locale=en,orientation=portrait \
+              --results-dir=result_dir \
+              --use-orchestrator \
+              --num-flaky-test-attempts 3     
+                         
+  build-ios:
+    parameters:
+      workspace-path:
+        type: string
+        default: example/build/output
+    executor: macos-xcode-latest
+    steps:
+      - checkout
+      - inject-netrc-credentials
+      - add-mapbox-submodules-key
+      - flutter/install_sdk_and_pub:
+          flutter_version: 3.3.2
+          app-dir: example
+      - flutter/install_ios_pod:
+          app-dir: example
+      - run:
+          name: swiftlint
+          working_directory: ios
+          command: brew install swiftlint; swiftlint lint --strict
+      - run:
+          name: unit test
+          command: flutter test test
+      - run:
+          name: "Build iOS integration tests"
+          command: |
+            bundle exec fastlane update_code_signing
+
+            pushd example
+
+            # required to init configs that pass environment variables to fastlane later
+            flutter build ios --config-only integration_test/all_test.dart \
+              --release --dart-define=ACCESS_TOKEN=${MAPBOX_ACCESS_TOKEN}
+            flutter build ios integration_test/all_test.dart \
+              --release --dart-define=ACCESS_TOKEN=${MAPBOX_ACCESS_TOKEN}
+
+            popd # to repo root
+
+            bundle exec fastlane build_examples_tests
+      - persist_to_workspace:
+          root: << parameters.workspace-path >>
+          paths:
+            - build_products.zip
+
+  run-ios-tests-firebase:
+    parameters:
+      workspace-path:
+        type: string
+        default: example/build/output
+    executor: macos-xcode-latest
+    steps:
+      - attach_workspace:
+          at: << parameters.workspace-path >>
+      - install-gcloud
+      - login-gcloud
+      - run:
+          name: "Run iOS integration tests on Firebase"
+          no_output_timeout: 20m
+          command: |
+            gcloud firebase test ios run \
+              --test << parameters.workspace-path >>/build_products.zip \
+              --device model=iphone8,version=15.7
+
+
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-android
+      - run-android-tests-firebase:
+          requires:
+            - build-android
+      - build-ios
+      - run-ios-tests-firebase:
+          requires:
+            - build-ios
+
+executors:
+  macos-xcode-latest:
+    resource_class: large
+    macos:
+      xcode: 14.1.0

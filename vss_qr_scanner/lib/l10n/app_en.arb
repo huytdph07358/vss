@@ -1,0 +1,12 @@
+{
+  "quetMaQr": "Scan QR code",
+  "copiedToClipboard": "Copied to clipboard",
+  "datQrcoeNamVuaKhungHinh_DuSangVaRoNet": "Place the qrcode to fit the frame, bright enough and clear",
+  "banCanCapQuyenTruyCapCameraMayChoUngDung": "You need to grant the app's camera access permission",
+  "khongTruyCapDuocCameraMay": "Do not access the camera of the device",
+  "choPhepUngDungTruyCapMayAnhCuaBan": "Allow app to acess your camera ?",
+  "banCanChoPhepCapquyenTruyCapMayAnhCuaBanDeSuDungTrongUngDung": "You need to allow permission to access your camera for use in the app. Go to App Info -> App Permissions -> Camera Permissions -> Allow",
+  "dongY": "Allow",
+  "tuChoi": "Dont allow",
+  "zzz": ""
+}

@@ -1,0 +1,23 @@
+{
+  "docThe": "Đọc thẻ",
+  "tapThe": "Táp thẻ",
+  "quetQrcode": "Quét qrocde",
+  "taoTaiKhoanThanhToan": "Tạo tài khoản thanh toán",
+  "boQua": "Bỏ qua",
+  "dongY": "Đồng ý",
+  "dangXuLy" : "Đang xử lý...",
+  "duLieuBatBuoc": "Dữ liệu bắt buộc",
+  "tiepTuc": "Tiếp tục",
+  "xuLyThanhCong": "Xử lý thành công",
+  "xuLyThatBai": "Xử lý thất bại",
+  "vuiLongDienDayDuThongTinDeTiepTuc": "Vui lòng nhập đầy đủ thông tin để tiếp tục",
+  "khongDocDuocKeyHeThong": "Không đọc được key hệ thống",
+  "khongDocDuocDuLieuTrenThe": "Không đọc được dữ liệu trên thẻ",
+  "thietLapNfcChuaBat": "Thiết lập nfc chưa được bật",
+  "copiedToClipboard": "Copied to clipboard",
+  "kiemTraLienTuc": "Kiểm tra liên tục",
+  "iosAlertMessage": "Giữ iPhone của bạn gần thẻ",
+  "iosMultipleTagMessage": "Nhiều thẻ được phát hiện, vui lòng chỉ để lại một thẻ và thử lại.",
+
+  "zzz": ""
+}

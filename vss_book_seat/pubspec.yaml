@@ -1,0 +1,22 @@
+name: vss_book_seat
+description: This is a flutter package to create seat booking layout for bus, theatre, aeroplane etc.
+version: 1.0.1
+homepage: 
+
+environment:
+  sdk: '>=2.18.5 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: ^2.0.5
+  flutter_svg: ^2.0.2
+  vss_global_constant:
+    path: ../vss_global_constant
+  vss_locale:
+    path: ../vss_locale
+  intl: any
+
+dev_dependencies:
+
+flutter:
